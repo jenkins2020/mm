@@ -13,7 +13,7 @@ pipeline {
       //sh ('pwd;wget http://ftp.gnu.org/gnu/hello/hello-2.10.tar.gz')
       }
       dir('~/rpmbuild/SPECS') {
-      sh ('pwd;rpmdev-newspec hello')
+      sh ('pwd;rpmbuild -ba hello.spec')
         }
       }
     }
