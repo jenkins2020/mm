@@ -12,7 +12,7 @@ pipeline {
       }
     stage ('Source') {
       steps {
-      sh ('pwd;wget http://ftp.gnu.org/gnu/hello/hello-2.10.tar.gz; cp /home/jenkins/hello-2.10.tar.gz /home/jenkins/SOURCES/; ls -a /home /jenkins/SOURCES')
+      sh ('pwd;wget http://ftp.gnu.org/gnu/hello/hello-2.10.tar.gz; cp /home/jenkins/workspace/mm_master/hello-2.10.tar.gz /home/jenkins/SOURCES/; ls -a /home /jenkins/SOURCES')
       }
       }
     stage ('Specs') {
