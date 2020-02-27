@@ -7,5 +7,5 @@ RUN dnf -y install wget && dnf clean all
 RUN useradd -m user && usermod -a -G mock user
 
 USER user
-WORKDIR /home/user
+WORKDIR /home/jenkins
 
