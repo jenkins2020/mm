@@ -22,9 +22,7 @@ pipeline {
       }
     stage ('Build') {
       steps {
-      dir('/home/jenkins/rpmbuild/SPECS') {
-      sh ('pwd;ls -a;rpmbuild -ba hello.spec')
-      }
+      sh ('pwd;cd /home/jenkins/rpmbuild/SPECS;ls -a;rpmbuild -ba hello.spec')
       }
       }
   }
