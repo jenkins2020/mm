@@ -9,6 +9,7 @@ pipeline {
       sh ('rpmdev-setuptree')
       sh ('ls;cp hello.spec /home/jenkins/rpmbuild/SPECS/; ls -a')
       }
+      }
     stage ('Source') {
       steps {
       sh ('#wget http://ftp.gnu.org/gnu/hello/hello-2.10.tar.gz;cd /home/jenkins/workspace/SOURCES; cp /home/jenkins/workspace/mm_master/hello/hello-2.10.tar.gz ./')
