@@ -7,4 +7,5 @@ RUN dnf -y install wget && dnf clean all
 RUN useradd -m jenkins && usermod -a -G mock jenkins
 
 USER jenkins
+WORKDIR /home/jenkins/workspace/mm_master/
 
