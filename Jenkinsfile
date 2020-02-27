@@ -10,10 +10,10 @@ pipeline {
       dir('~/rpmbuild/SOURCES') {
       // some block
         
-      sh ('pwd;wget http://ftp.gnu.org/gnu/hello/hello-2.10.tar.gz')
+      sh ('pwd;wget http://ftp.gnu.org/gnu/hello/hello-2.10.tar.gz;ls')
       }
       dir('~/rpmbuild/SPECS') {
-      sh ('pwd;rpmbuild -ba hello.spec')
+      sh ('pwd;ls;rpmbuild -ba hello.spec')
       }
     }
   }
