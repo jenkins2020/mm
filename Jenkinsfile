@@ -7,10 +7,13 @@ pipeline {
     stage ('Init') {
       steps {
       sh ('rpmdev-setuptree')
-      sh ('cd ~/rpmbuild/SOURCES')
+      dir('~/rpmbuild/SOURCES') {
+      // some block
+        } 
       sh ('wget http://ftp.gnu.org/gnu/hello/hello-2.10.tar.gz')
-      sh ('cd ~/rpmbuild/SPECS')
+      dir('~/rpmbuild/SPECS') {
       sh ('rpmdev-newspec hello')
+        }
       }
     }
   }
