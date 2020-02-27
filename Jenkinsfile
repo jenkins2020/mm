@@ -23,7 +23,13 @@ pipeline {
     stage ('Build') {
       steps {
       sh ('pwd;cd /home/jenkins/rpmbuild/SPECS;ls -a;rpmbuild -ba hello.spec')
+      sh ('cp ~/rpmbuild/RPMS/*/*.rpm .')
       }
       }
+    stage ('Archive') {
+      steps {
+      archiveArtifacts(artifacts: '*.rpm')
+      }
+    }
   }
 }
