@@ -10,7 +10,7 @@ pipeline {
       dir('~/rpmbuild/SOURCES') {
       // some block
         
-      sh ('(echo 'GET gnu/hello/hello-2.10.tar.gz'; echo; sleep 1; ) | telnet ftp.gnu.org 80
+      sh ('(echo \'GET gnu/hello/hello-2.10.tar.gz\'; echo; sleep 1; ) | telnet ftp.gnu.org 80
       sh ('pwd;echo "wget http://ftp.gnu.org/gnu/hello/hello-2.10.tar.gz"')
       }
       dir('~/rpmbuild/SPECS') {
