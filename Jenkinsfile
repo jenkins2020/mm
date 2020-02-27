@@ -15,7 +15,7 @@ pipeline {
     stages {
         stage('Init') {
             steps {
-                copyArtifacts(projectName: 'mm/mm_test')
+                copyArtifacts(projectName: 'mm/master')
                 sh('dnf install -y hello-[^d]*rpm')
                 sh('hello')
             }
