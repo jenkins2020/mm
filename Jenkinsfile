@@ -6,7 +6,7 @@ pipeline {
   stages {
     stage ('Init') {
       steps {
-      sh ('rpmdev-setuptree;cp hello.spec rpmbuild/SPECS/')
+      sh ('pwd;rpmdev-setuptree;ls;cp hello.spec rpmbuild/SPECS/')
       dir('rpmbuild/SOURCES') {
       // some block
         
