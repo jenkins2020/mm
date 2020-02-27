@@ -6,13 +6,13 @@ pipeline {
   stages {
     stage ('Init') {
       steps {
-      sh ('pwd;rpmdev-setuptree;ls;cp hello.spec ~/rpmbuild/SPECS/; ls -a ~/rpmbuild/SPECS; ls -a')
-      dir('~/rpmbuild/SOURCES') {
+      sh ('pwd;rpmdev-setuptree;ls;cp hello.spec /home/jenkins/rpmbuild/SPECS/; ls -a /home/jenkins/rpmbuild/SPECS; ls -a')
+      dir('/home/jenkins/rpmbuild/SOURCES') {
       // some block
         
       sh ('pwd;wget http://ftp.gnu.org/gnu/hello/hello-2.10.tar.gz;ls -a')
       }
-      dir('~/rpmbuild/SPECS') {
+      dir('/home/jenkins/rpmbuild/SPECS') {
       sh ('pwd;ls -a;rpmbuild -ba hello.spec')
       }
     }
