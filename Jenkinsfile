@@ -7,7 +7,8 @@ pipeline {
     stage ('Init') {
       steps {
       sh ('echo $HOME')
-      {
+      
+      }
     }
   }
 }
