@@ -22,7 +22,7 @@ pipeline {
     }
     stage ('Specs') {
       steps {
-        sh ('cp /home/jenkins/workspace/mm_master/hello.spec /home/jenkins/rpmbuild/SPECS/; ls -a')
+        sh ('cp /home/jenkins/workspace/mm_build/hello.spec /home/jenkins/rpmbuild/SPECS/; ls -a')
       }
     }
     stage ('Build') {
