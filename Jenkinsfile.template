@@ -7,7 +7,8 @@ pipeline {
         axes {
           axis {
             name 'VERSION'
-            values 'fedora:30', 'fedora:31','fedora:32'
+              values 'latest'
+//            values 'fedora:30', 'fedora:31','fedora:32'
           }
         }
         stages {
