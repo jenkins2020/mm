@@ -12,7 +12,7 @@ pipeline {
     }
   }
   stages {
-    stage {
+    stage ('Get artifacts') {
       steps {
         copyArtifacts(projectName: 'mm_build', selector: specific("${params.BUILDNUMBER}"));
       }
