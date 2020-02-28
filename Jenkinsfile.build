@@ -17,7 +17,7 @@ pipeline {
     }
     stage ('Source') {
       steps {
-        sh ('cd ~rpmbuild/SOURCES && wget http://ftp.gnu.org/gnu/hello/hello-2.10.tar.gz; ls -a /home/jenkins/rpmbuild/SOURCES')
+        sh ('cd ~/rpmbuild/SOURCES && wget http://ftp.gnu.org/gnu/hello/hello-2.10.tar.gz; ls -a /home/jenkins/rpmbuild/SOURCES')
       }
     }
     stage ('Specs') {
