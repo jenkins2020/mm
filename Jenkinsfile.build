@@ -22,28 +22,28 @@ pipeline {
     }
     stage ('Specs') {
       steps {
-        sh ('ls -al; echo "____";ls ~')
+//        sh ('ls -al; echo "____";ls ~')
         sh ('cp hello.spec /home/jenkins/rpmbuild/SPECS/; ls -a')
       }
     }
-//    stage ('Build') {
-//      steps {
-//        sh ('cd /home/jenkins/rpmbuild/SPECS;rpmbuild -ba hello.spec')
-//        sh ('cp ~/rpmbuild/RPMS/*/*.rpm .')
-//      }
-//    }
-//    stage ('Archive') {
-//      steps {
-//      archiveArtifacts(artifacts: '*.rpm', fingerprint: true)
-//      }
-//    }
+    stage ('Build') {
+      steps {
+        sh ('cd /home/jenkins/rpmbuild/SPECS;rpmbuild -ba hello.spec')
+        sh ('cp ~/rpmbuild/RPMS/*/*.rpm .')
+      }
+    }
+    stage ('Archive') {
+      steps {
+      archiveArtifacts(artifacts: '*.rpm', fingerprint: true)
+      }
+    }
 
-//    stage ('Testjob') {
-//      steps {
-//        build job: 'mm_buildtest', parameters: [
-//          string(name: 'VERSION', value: "${VERSION}"),
-//          ]
-//      }
-//    }
+    stage ('Testjob') {
+      steps {
+        build job: 'mm_buildtest', parameters: [
+          string(name: 'VERSION', value: "${VERSION}"),
+          ]
+      }
+    }
   }
 }
