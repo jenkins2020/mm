@@ -24,7 +24,7 @@ pipeline {
     }
     stage('Install') {
       steps {
-          sh "echo ${VERSION}"
+          sh "echo ${VERSION}|cut -d\":\" -f2; ls *.rpm"
 //        sh "rpm -hiv hello-2.10-1.fc$(echo ${VERSION}|cut -d\":\" -f2).x86_64.rpm"
 //        sh "ls -lah;#rpm -hiv hello-2.10-0.x86_64.rpm"
       }
