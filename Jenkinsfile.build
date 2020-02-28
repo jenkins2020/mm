@@ -42,7 +42,8 @@ pipeline {
       steps {
         build job: 'mm_buildtest', parameters: [
           string(name: 'VERSION', value: "${VERSION}"),
-          ]
+          string( name: 'BUILDNUMBER', value: "${env.BUILD_NUMBER}" ),
+        ]
       }
     }
   }
