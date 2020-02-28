@@ -6,8 +6,10 @@ pipeline {
   }
 
   agent {
-    image "${VERSION}"
-    args '-u 0:0'
+    docker {
+      image "${VERSION}"
+      args '-u 0:0'
+    }
   }
   stages {
     stage {
