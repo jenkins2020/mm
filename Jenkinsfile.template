@@ -11,10 +11,12 @@ pipeline {
           }
         }
         stages {
-          stage (Buildjob){
-            build job 'mm_build', parameters: [
-              string(name: 'VERSION', value: "${VERSION}")
-            ]
+          stage ('Buildjob'){
+            steps {
+              build job 'mm_build', parameters: [
+                string(name: 'VERSION', value: "${VERSION}")
+              ]
+            }
           }
         }
       }
