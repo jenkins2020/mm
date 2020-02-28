@@ -17,14 +17,14 @@ pipeline {
         copyArtifacts(projectName: 'mm_build', selector: specific("${params.BUILDNUMBER}"));
       }
     }
-//    stage('Version') {
-//      steps {
-//        echo "${VERSION} from build ${params.BUILDNUMBER}"
-//      }
-//    }
+    stage('Version') {
+      steps {
+        echo "${VERSION} from build ${params.BUILDNUMBER}"
+      }
+    }
     stage('Install') {
       steps {
-        sh "rpm -hiv hello-2.10-0.x86_64.rpm"
+        sh "ls -lah;#rpm -hiv hello-2.10-0.x86_64.rpm"
       }
      }
     stage ('Test') {
