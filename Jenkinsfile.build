@@ -38,9 +38,11 @@ pipeline {
     }
 
     stage ('Testjob') {
-      build job: 'mm_buildtest', parameters: [
-        string(name: 'VERSION', value: "${VERSION}"),
-        ]
+      steps {
+        build job: 'mm_buildtest', parameters: [
+          string(name: 'VERSION', value: "${VERSION}"),
+          ]
+      }
     }
   }
 }
