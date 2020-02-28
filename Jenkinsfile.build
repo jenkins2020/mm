@@ -1,0 +1,46 @@
+#!/bin/groovy
+pipeline {
+  parameters {
+    string(name: 'VERSION', defaultValue: 'fedora:latest', description: '')
+    }
+  agent {
+    dockerfile {
+      filename "Dockerfile.$(VERSION)"
+    }
+  }
+  stages {
+    stage ('Init') {
+      steps {
+        sh ('rpmdev-setuptree')
+        sh ('ls -a; ls ~/rpmbuild/*')
+      }
+    }
+    stage ('Source') {
+      steps {
+        sh ('cd ~rpmbuild/SOURCES && wget http://ftp.gnu.org/gnu/hello/hello-2.10.tar.gz; ls -a /home/jenkins/rpmbuild/SOURCES')
+      }
+    }
+    stage ('Specs') {
+      steps {
+        sh ('cp /home/jenkins/workspace/mm_master/hello.spec /home/jenkins/rpmbuild/SPECS/; ls -a')
+      }
+    }
+    stage ('Build') {
+      steps {
+        sh ('cd /home/jenkins/rpmbuild/SPECS;rpmbuild -ba hello.spec')
+        sh ('cp ~/rpmbuild/RPMS/*/*.rpm .')
+      }
+    }
+    stage ('Archive') {
+      steps {
+      archiveArtifacts(artifacts: '*.rpm', fingerprint: true)
+      }
+    }
+
+    stage ('Testjob') {
+      build job: 'mm_buildtest', parameters: [
+        string(name: 'VERSION', value: "${VERSION}"),
+        ]
+    }
+  }
+}

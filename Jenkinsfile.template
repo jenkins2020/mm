@@ -1,0 +1,23 @@
+#!/bin/groovy
+pipeline {
+  agent any
+  stages {
+    stage('Versionmatrix'){
+      matrix {
+        axes {
+          axis {
+            name 'VERSION'
+            values 'fedora:30', 'fedora:31','fedora:32'
+          }
+        }
+        stages {
+          stage (Buildjob){
+            build job 'mm_build', parameters: [
+              string(name: 'VERSION', value: "${VERSION}")
+            ]
+          }
+        }
+      }
+    }
+  }
+}
