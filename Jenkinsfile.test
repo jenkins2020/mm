@@ -28,7 +28,9 @@ pipeline {
       }
      }
     stage ('Test') {
-      sh "/usr/bin/hello"
+      steps {
+        sh "/usr/bin/hello"
+      }
     }
   }
 }
